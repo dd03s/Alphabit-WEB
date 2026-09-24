@@ -1,8 +1,8 @@
 import type { Project, Service, ContactPayload } from '@/types';
 
 const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
-).replace(/\/$/, '');
+  import.meta.env.VITE_API_URL || 'http://localhost:3000'
+).replace(/\/$/, '').replace(/\/api$/, '');
 
 class ApiError extends Error {
   status: number;
@@ -14,7 +14,7 @@ class ApiError extends Error {
 }
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE_URL}${path}`, {
+  const res = await fetch(`${API_BASE_URL}/api${path}`, {
     headers: {
       'Content-Type': 'application/json',
       ...options?.headers,
@@ -37,6 +37,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 export const api = {
   getProjects: (category?: string, featured?: boolean) => {
     const params = new URLSearchParams();
+    params.set('status', 'published');
     if (category && category !== 'Todos') params.set('category', category);
     if (featured) params.set('featured', 'true');
     const query = params.toString();
@@ -46,6 +47,8 @@ export const api = {
   getProject: (id: string) => request<Project>(`/projects/${id}`),
 
   getServices: () => request<Service[]>('/services'),
+
+  health: () => request<{ status: string; system: string; version: string }>('/health'),
 
   sendContact: (data: ContactPayload) =>
     request<{ success: boolean; message: string }>('/contact', {

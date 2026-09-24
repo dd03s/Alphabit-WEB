@@ -1,4 +1,15 @@
-import { PenTool, Camera, BookOpen, AlertCircle, RefreshCw } from 'lucide-react';
+import {
+  PenTool,
+  Camera,
+  BookOpen,
+  Palette,
+  Code,
+  Smartphone,
+  Megaphone,
+  Layout,
+  AlertCircle,
+  RefreshCw,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { Service } from '@/types';
 
@@ -12,6 +23,11 @@ const ICON_MAP: Record<string, LucideIcon> = {
   'graphic-design': PenTool,
   'camera': Camera,
   'book': BookOpen,
+  Palette,
+  Code,
+  Smartphone,
+  Megaphone,
+  Layout,
 };
 
 const FALLBACK_ICONS = [PenTool, Camera, BookOpen];
@@ -77,7 +93,7 @@ export function Services({ services, loading, error }: ServicesProps) {
               const Icon = ICON_MAP[service.icon] || FALLBACK_ICONS[i % FALLBACK_ICONS.length];
               return (
                 <div
-                  key={service.id || service._id || i}
+                  key={service.id || i}
                   className="group relative rounded-2xl border border-ink-100 bg-white p-8 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-500/5 transition-all duration-500 animate-fade-up"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >

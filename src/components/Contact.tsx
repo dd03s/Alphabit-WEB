@@ -141,7 +141,7 @@ export function Contact({ services }: ContactProps) {
                   >
                     <option value="">Selecciona una disciplina...</option>
                     {serviceList.map((s) => (
-                      <option key={s.id || s._id} value={s.name}>
+                      <option key={s.id} value={s.name}>
                         {s.name}
                       </option>
                     ))}

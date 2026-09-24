@@ -19,7 +19,7 @@ function ProjectSkeleton() {
 }
 
 function projectId(p: Project): string {
-  return p.id || p._id || '';
+  return p.id || p.slug || '';
 }
 
 export function Projects({ projects, loading, error }: ProjectsProps) {

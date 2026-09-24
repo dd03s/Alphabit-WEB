@@ -6,6 +6,7 @@ export interface Project {
   category: string;
   tags: string[];
   date: string;
+  year?: string | number;
   coverImage: string;
   imageUrl: string;
   excerpt: string;

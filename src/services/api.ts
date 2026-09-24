@@ -1,6 +1,8 @@
 import type { Project, Service, ContactPayload } from '@/types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+).replace(/\/$/, '');
 
 class ApiError extends Error {
   status: number;

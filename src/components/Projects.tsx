@@ -251,7 +251,7 @@ export function Projects({ projects, loading, error }: ProjectsProps) {
                 </div>
                 <div className="flex items-center gap-2 text-ink-600">
                   <Calendar size={16} className="text-brand-500" />
-                  <span className="font-medium">{selected.year || 'N/A'}</span>
+                  <span className="font-medium">{selected.year || selected.date || 'N/A'}</span>
                 </div>
               </div>
 

@@ -1,4 +1,5 @@
 import { PenTool, Camera, BookOpen, AlertCircle, RefreshCw } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { Service } from '@/types';
 
 interface ServicesProps {
@@ -7,7 +8,7 @@ interface ServicesProps {
   error: string | null;
 }
 
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   'graphic-design': PenTool,
   'camera': Camera,
   'book': BookOpen,
